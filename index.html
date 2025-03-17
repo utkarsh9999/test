@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOGO Offer</title>
+    <style>
+        input[type="radio"] {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ff4d79; 
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #ff4d79; 
+            border-color: #ff4d79;
+        }
+
+        input[type="radio"]:checked::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .heading {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4d79;
+        }
+        .box {
+            border: 2px solid #ddd;
+            padding: 15px;
+            border-radius: 0px;
+            margin-bottom: 15px;
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .box.selected {
+            border-color: #ff4d79;
+            background: #fff0f4;
+        }
+        .discount {
+            background: #ff4d79;
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        .most-popular {
+            position: absolute;
+            top: -12px;
+            right: 10px;
+            background: #ff4d79;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: grey;
+            font-size: 14px;
+        }
+        .size-color {
+            display: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .free-delivery {
+            color: #ff4d79;
+            font-weight: bold;
+        }
+        .add-to-cart {
+            background: #ff4d79;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .box:hover{
+            border-color: #ff4d79;
+            background: #fff0f4;
+        }
+        select {
+            appearance: none; 
+            width: 100%;
+            padding: 7px;
+            border: 2px solid #c1c1c1; 
+            border-radius: 1px;
+            background-color: white;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        select::-ms-expand {
+            display: none; 
+        }
+
+        select:focus {
+            border-color: #c1c1c1; 
+            box-shadow: 0 0 5px rgba(255, 77, 121, 0.5);
+        }
+
+        .select-container {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .select-container::after {
+            content: "▼";
+            font-size: 14px;
+            color: #ff4d79;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .pric{
+            margin-top: 15px;
+        }
+        .label{
+            margin-left: 25px;
+        }
+
+        .tag{
+            margin-bottom: 20px;
+        }
+        .space{
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="heading">YAY! It's BOGO</h2>
+
+        <div class="box" onclick="selectUnit(1, 10)">
+            <input type="radio" id="radio1" name="unit" value="1">
+            <span>1 Unit</span> <span class="discount">10% Off</span>
+            <div class="pric">
+                <span class="price">$10.00 USD</span>
+                <span class="old-price">$24.00 USD</span>
+            </div>
+            
+            <div class="size-color" id="size1">
+                <div class="tags">
+                    <span class="label">Size</span>
+                    <span style="margin-left: 70px;">Colour</span><br>
+                </div>
+                
+                <label>#1 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            
+                <div class="space"></div>
+            
+                <label>#2 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Colour</option>
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="box" onclick="selectUnit(2, 18)">
+            <input type="radio" id="radio2" name="unit" value="2">
+            <span>2 Unit</span> <span class="discount">20% Off</span>
+            <div class="most-popular">MOST POPULAR</div>
+            <div class="pric">
+                <span class="price">$18.00 USD</span>
+                <span class="old-price">$24.00 USD</span>
+            </div>
+            
+            <div class="size-color"  id="size2">
+                <div class="tags">
+                    <span class="label">Size</span>
+                    <span style="margin-left: 70px;">Colour</span><br>
+                </div>
+                <label>#1 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+
+                <div class="space"></div>
+
+                <label>#2 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Colour</option>
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="box" onclick="selectUnit(3, 24)">
+            <input type="radio" id="radio3"  name="unit" value="3">
+            <span>3 Unit</span> <span class="discount">30% Off</span>
+            <div class="pric">
+                <span class="price">$24.00 USD</span>
+                <span class="old-price">$24.00 USD</span>
+            </div>
+            <div class="size-color" id="size3">
+                <div class="tags">
+                    <span class="label">Size</span>
+                    <span style="margin-left: 70px;">Colour</span><br>
+                </div>
+                <label>#1 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            
+                <div class="space"></div>
+            
+                <label>#2 </label>
+                <select class="select-container">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select class="select-container">
+                    <option>Colour</option>
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            </div>
+        </div>
+
+        <p class="free-delivery">Free Delivery</p>
+        <p>Total : <span id="totalPrice">$0.00 USD</span></p>
+
+        <button class="add-to-cart">+ Add to Cart</button>
+    </div>
+
+    <script>
+        function selectUnit(unit, price) {
+            document.querySelectorAll(".box").forEach(box => {
+                box.classList.remove("selected");
+            });
+
+            event.currentTarget.classList.add("selected");
+
+            document.querySelectorAll(".size-color").forEach(el => el.style.display = "none");
+            if (unit === 1) {
+                document.getElementById("radio1").click();
+                event.currentTarget.querySelector("#size1").style.display = "block";
+            }
+
+            if (unit === 2) {
+                document.getElementById("radio2").click();
+                event.currentTarget.querySelector("#size2").style.display = "block";
+            }
+
+            if(unit===3)
+            {
+                document.getElementById("radio3").click();
+                event.currentTarget.querySelector("#size3").style.display = "block";   
+            }
+            
+
+            document.getElementById("totalPrice").innerText = `$${price}.00 USD`;
+        }
+    </script>
+
+</body>
+</html>
